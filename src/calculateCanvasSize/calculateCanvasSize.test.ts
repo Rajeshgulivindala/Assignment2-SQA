@@ -20,6 +20,9 @@ describe("calculateCanvasSize", () => {
     const result = calculateCanvasSize("10.5", "100.5");
     expect(result).toEqual(1055.25);
   });
-
+  test("returns NaN for empty string inputs", () => {
+    const result = calculateCanvasSize("", "100");
+    expect(isNaN(result)).toBe(true); // Empty string is not a number
+  });
 
 });
