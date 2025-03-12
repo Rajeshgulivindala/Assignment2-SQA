@@ -22,3 +22,21 @@ describe("paint required calculator", () => {
     expect(result).toEqual(1000); // 1e6 / 1e3 = 1000
   });
 });
+function PaintRequiredForm(area: number, coveragePerLiter: number): string {
+  const paintRequired = paintRequiredCalculator(area, coveragePerLiter);
+  return `Paint required: ${paintRequired.toFixed(2)} liters`;
+}
+
+describe("PaintRequiredForm UI Integration", () => {
+  test("displays correct paint required for valid inputs", () => {
+    const result = PaintRequiredForm(50, 10);
+    expect(result).toBe("Paint required: 5.00 liters");
+  });
+
+  test("displays 0 liters when area is 0", () => {
+    const result = PaintRequiredForm(0, 10);
+    expect(result).toBe("Paint required: 0.00 liters");
+  });
+
+});
+
