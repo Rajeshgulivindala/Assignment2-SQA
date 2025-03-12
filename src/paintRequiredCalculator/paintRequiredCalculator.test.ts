@@ -17,4 +17,8 @@ describe("paint required calculator", () => {
     const result = paintRequiredCalculator(50.5, 10.5);
     expect(result).toBeCloseTo(4.809); // 50.5 / 10.5 ≈ 4.809
   });
+  test("handles very large numbers correctly", () => {
+    const result = paintRequiredCalculator(1e6, 1e3);
+    expect(result).toEqual(1000); // 1e6 / 1e3 = 1000
+  });
 });
