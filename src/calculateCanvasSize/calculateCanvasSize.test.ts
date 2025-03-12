@@ -35,3 +35,17 @@ describe("calculateCanvasSize", () => {
     expect(result).toEqual(1e12); // 1e6 * 1e6 = 1e12
   });
 });
+// Mock UI component that uses calculateCanvasSize
+function CanvasSizeForm(length: string, width: string): string {
+  const size = calculateCanvasSize(length, width);
+  return `Canvas size is ${size} square units`;
+}
+
+describe("CanvasSizeForm UI Integration", () => {
+  test("displays correct canvas size for valid inputs", () => {
+    const result = CanvasSizeForm("10", "100");
+    expect(result).toBe("Canvas size is 1000 square units");
+  });
+});
+
+
