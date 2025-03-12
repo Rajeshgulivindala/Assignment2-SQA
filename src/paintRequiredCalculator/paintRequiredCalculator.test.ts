@@ -10,4 +10,8 @@ describe("paint required calculator", () => {
     const result = paintRequiredCalculator(0, 10);
     expect(result).toEqual(0); // 0 / 10 = 0
   });
+  test("throws error when coverage per liter is 0", () => {
+    expect(() => paintRequiredCalculator(50, 0)).toThrow("Coverage per liter must be greater than 0");
+  });
+  
 });
