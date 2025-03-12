@@ -24,5 +24,11 @@ describe("calculateCanvasSize", () => {
     const result = calculateCanvasSize("", "100");
     expect(isNaN(result)).toBe(true); // Empty string is not a number
   });
+  test("returns NaN for null or undefined inputs", () => {
+    const result1 = calculateCanvasSize("null", "100");
+    const result2 = calculateCanvasSize("10", "undefined");
+    expect(isNaN(result1)).toBe(true); // null is not a number
+    expect(isNaN(result2)).toBe(true); // undefined is not a number
+  });
 
 });
