@@ -10,6 +10,12 @@ describe("calculateCanvasSize", () => {
     expect(calculateCanvasSize("0", "100")).toBe(0);
     expect(calculateCanvasSize("100", "0")).toBe(0);
     expect(calculateCanvasSize("0", "0")).toBe(0);
+  })
+  test("handles negative numbers", () => {
+    expect(calculateCanvasSize("-10", "10")).toBe(-100);
+    expect(calculateCanvasSize("10", "-10")).toBe(-100);
+    expect(calculateCanvasSize("-10", "-10")).toBe(100);
   });
+
 
 });
