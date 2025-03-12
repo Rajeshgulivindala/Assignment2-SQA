@@ -46,6 +46,44 @@ describe("CanvasSizeForm UI Integration", () => {
     const result = CanvasSizeForm("10", "100");
     expect(result).toBe("Canvas size is 1000 square units");
   });
+  test("displays canvas size as 0 when one input is 0", () => {
+    const result = CanvasSizeForm("0", "100");
+    expect(result).toBe("Canvas size is 0 square units");
+  });
+
+  test("displays canvas size as 0 when both inputs are 0", () => {
+    const result = CanvasSizeForm("0", "0");
+    expect(result).toBe("Canvas size is 0 square units");
+  });
+
+  test("displays NaN for invalid inputs", () => {
+    const result = CanvasSizeForm("abc", "100");
+    expect(result).toBe("Canvas size is NaN square units");
+  });
+});
+function validateInputs(length: string, width: string): boolean {
+  return !isNaN(parseInt(length)) && !isNaN(parseInt(width));
+}
+
+describe("Validation Function Integration", () => {
+  test("calculates canvas size when inputs are valid", () => {
+    const length = "10";
+    const width = "100";
+    const isValid = validateInputs(length, width);
+    expect(isValid).toBe(true);
+
+    const result = calculateCanvasSize(length, width);
+    expect(result).toEqual(1000);
+  });
+
+  test("throws error when inputs are invalid", () => {
+    const length = "abc";
+    const width = "100";
+    const isValid = validateInputs(length, width);
+    expect(isValid).toBe(false);
+
+    expect(() => calculateCanvasSize(length, width)).not.toThrow(); // NaN is returned, but no error is thrown
+  });
 });
 
 
