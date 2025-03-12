@@ -30,5 +30,8 @@ describe("calculateCanvasSize", () => {
     expect(isNaN(result1)).toBe(true); // null is not a number
     expect(isNaN(result2)).toBe(true); // undefined is not a number
   });
-
+  test("handles very large numbers correctly", () => {
+    const result = calculateCanvasSize("1e6", "1e6");
+    expect(result).toEqual(1e12); // 1e6 * 1e6 = 1e12
+  });
 });
