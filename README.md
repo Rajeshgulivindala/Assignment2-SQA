@@ -102,3 +102,55 @@ npm run test [my test name]
 
 - Import `calculateCanvasSize` and pass length and width as strings.
 - Run tests using `npm test`.
+
+# Paint Required Calculator
+
+## Core Functionality
+
+- Function `paintRequiredCalculator` calculates the amount of paint required using the formula:
+
+paintRequired = area / coveragePerLiter
+
+- Accepts numeric inputs for `area` and `coveragePerLiter`.
+
+## Input Handling
+
+- Handles valid inputs (e.g., `area = 50`, `coveragePerLiter = 10` → `5` liters).
+- Handles edge cases:
+- Area is `0` → `0` liters.
+- Coverage per liter is `0` → Throws an error (division by zero).
+- Negative inputs → Throws an error.
+- Decimal inputs (e.g., `area = 50.5`, `coveragePerLiter = 10.5` → `4.809` liters).
+- Very large numbers (e.g., `area = 1e6`, `coveragePerLiter = 1e3` → `1000` liters).
+
+## Unit Tests
+
+- Tests for valid inputs, edge cases, and invalid inputs.
+- Ensures correct calculation and error handling.
+
+## Integration Tests
+
+### UI Integration
+
+- Mock UI component (`PaintRequiredForm`) displays the amount of paint required.
+- Handles valid and invalid inputs.
+
+### API Integration
+
+- Mock API fetches `area` and `coveragePerLiter` and calculates paint required.
+- Handles invalid data from the API.
+
+### Validation Integration
+
+- Validates inputs before calculation.
+- Ensures only valid inputs are processed.
+
+## Technologies Used
+
+- TypeScript for implementation.
+- Jest for testing.
+
+## How to Use
+
+- Import `paintRequiredCalculator` and pass `area` and `coveragePerLiter` as numbers.
+- Run tests using `npm test`.
